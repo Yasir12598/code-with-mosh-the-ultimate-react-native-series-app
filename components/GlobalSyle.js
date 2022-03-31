@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const GolbalStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'red'
+    backgroundColor:'dodgerblue'
   },
   body: {
     flex: 1,

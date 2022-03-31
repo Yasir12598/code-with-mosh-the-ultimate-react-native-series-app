@@ -1,20 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
-  StyleSheet, View
+  StyleSheet,
+  View,
+  Switch
+
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import AppText from './components/AppText';
-import { GolbalStyle } from './components/GlobalSyle';
+import AppPicker from './components/AppPicker';
+
+
+import AppTextInput from './components/AppTextInput';
 
 
 
 export default function App() {
+  const [isNew, setIsNew] = useState(false);
+  
   return (
-    <View style={GolbalStyle.container}>
-      <AntDesign name='forward' size={20} color='black' />
-      <AppText name="komail"> Hellohhhhhhhhhhhhhhhhhhhhhh </AppText>
+    <View style={styles.container}>
+        <AppPicker placeholder={"Category"}
+          icon="apps"
+          />
+        <AppTextInput
+          placeholder={'Email'}
+          icon={"email"}
+          />
 
-    </View>
+
+
+    </View >
 
   );
 }
@@ -23,7 +36,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+
   },
 });
