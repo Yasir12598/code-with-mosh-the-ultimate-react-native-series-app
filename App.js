@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,25 +9,22 @@ import AppPicker from './components/AppPicker';
 
 
 import AppTextInput from './components/AppTextInput';
+import LoginScreen from './Screens/LoginScreen';
+
+
 
 
 
 export default function App() {
-  const [isNew, setIsNew] = useState(false);
-  
+
+
   return (
     <View style={styles.container}>
-        <AppPicker placeholder={"Category"}
-          icon="apps"
-          />
-        <AppTextInput
-          placeholder={'Email'}
-          icon={"email"}
-          />
+
+    <LoginScreen/>
 
 
-
-    </View >
+    </View>
 
   );
 }
@@ -39,3 +36,30 @@ const styles = StyleSheet.create({
 
   },
 });
+
+
+// const categories =[
+//   {
+//     label: "Furniture",
+//     value: 1,
+//   },
+//   {
+//     label: "Clothing",
+//     value: 2,
+//   },
+//   {
+//     label: "Cameras",
+//     value: 3,
+//   },
+// ]
+
+
+//const [category, setCategory] = useState();
+
+
+{/* <AppPicker placeholder={"Category"}
+        icon="apps"
+        items={categories}
+        selectedItem={category}
+        onSelectItem={item=> setCategory(item)}
+      /> */}

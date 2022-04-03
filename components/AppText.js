@@ -4,10 +4,10 @@ import {
 
 } from 'react-native';
 
-import myStyles from "../config/Styles";
+import Styles from "../config/Styles";
 function AppText({ children, style }) {
     return (
-        <Text style={[myStyles.text, style]}>{children}</Text>
+        <Text style={[Styles.text, style]}>{children}</Text>
     );
 }
 

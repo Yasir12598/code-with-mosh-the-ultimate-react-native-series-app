@@ -42,9 +42,9 @@ function MessagesScreen(props) {
                         title={item.title}
                         subTitle={item.description}
                         image={item.image}
-                        DeleteIconView={<ListItemDeleteAction/>}
+                        DeleteIconView={<ListItemDeleteAction />}
                         onPress={() => handleDelete(item)}
-                        //renderRightActions={ListItemDeleteAction}
+                    //renderRightActions={ListItemDeleteAction}
                     />
                 }
                 ItemSeparatorComponent={ListItemSeparator}

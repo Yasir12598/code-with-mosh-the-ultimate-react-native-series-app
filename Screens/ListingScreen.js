@@ -20,7 +20,7 @@ const listings = [
         id: 2,
         title: "Couch in Good condition",
         price: '199',
-        image: require("../asserts/couch.jpg") 
+        image: require("../asserts/couch.jpg")
     }
 ]
 
@@ -29,14 +29,14 @@ function ListingScreen(props) {
         <SafeAreaView>
             <FlatList
                 data={listings}
-                keyExtractor={listings=>listings.id.toString()}
-                renderItem={({item})=>
+                keyExtractor={listings => listings.id.toString()}
+                renderItem={({ item }) =>
                     <Card
                         image={item.image}
                         title={item.title}
                         subTitle={"$" + item.price}
-                        />
-            }
+                    />
+                }
             />
         </SafeAreaView>
     );
