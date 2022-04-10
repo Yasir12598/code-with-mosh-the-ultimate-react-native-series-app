@@ -4,15 +4,17 @@ import {
     StyleSheet,
     View,
     TextInput,
+    TouchableOpacity
 } from 'react-native';
+
 
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import defaultStyles from "../config/Styles"
-function AppTextInput({ icon, ...otherProps }) {
+function AppTextInput({ passwordEyeOnpress, icon,passwordEyeIcon ,width="100%" ,...otherProps }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {width:width}]}>
             {icon && <MaterialCommunityIcons
                 style={styles.icon}
                 name={icon}
@@ -20,9 +22,23 @@ function AppTextInput({ icon, ...otherProps }) {
                 color={defaultStyles.Colors.medium}
             />}
             <TextInput
-                style={[defaultStyles.text, {width:"100%"}]}
+                placeholderTextColor={defaultStyles.Colors.medium}
+                style={[defaultStyles.text/*{width:"100%"}*/]}
                 {...otherProps}
             />
+            {passwordEyeOnpress &&
+                <TouchableOpacity onPress={passwordEyeOnpress}>
+                <MaterialCommunityIcons
+                    
+                    style={styles.icon}
+                    name={passwordEyeIcon}
+                    size={25}
+                    color={defaultStyles.Colors.medium}
+
+                />
+                </TouchableOpacity>
+            }
+
         </View>
     );
 }
@@ -32,7 +48,6 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.Colors.light,
         borderRadius: 25,
         flexDirection: 'row',
-        width: "100%",
         padding: 5,
         marginVertical: 10,
     },

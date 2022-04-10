@@ -9,17 +9,16 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import Colors from '../config/Colors';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import ListingDetailScreen from '../Screens/ListingDetailScreen';
-import ListItemDeleteAction from './ListItemDeleteAction';
 
-function ListItem({ image, title, subTitle, ImageComponent, style, onPress, DeleteIconView}) {
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+
+
+function ListItem({ image, title, subTitle, ImageComponent, style, onPress, selectMessageOnpress ,DeleteIconView}) {
     return (
        
 
         <TouchableHighlight
-            //onPress={onPress}
+            onPress={selectMessageOnpress}
             underlayColor={Colors.light}
         >
 

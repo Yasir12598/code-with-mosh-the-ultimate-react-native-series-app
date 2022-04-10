@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
-  Switch
 
 } from 'react-native';
-import AppPicker from './components/AppPicker';
+import ListingEditScreen from './Screens/ListingEditScreen';
+import MessagesScreen from './Screens/MessagesScreen';
 
 
-import AppTextInput from './components/AppTextInput';
-import LoginScreen from './Screens/LoginScreen';
-
-
-
+import RegisterScreen from './Screens/RegisterScreen';
 
 
 export default function App() {
@@ -21,7 +17,7 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-    <LoginScreen/>
+    <ListingEditScreen/>
 
 
     </View>

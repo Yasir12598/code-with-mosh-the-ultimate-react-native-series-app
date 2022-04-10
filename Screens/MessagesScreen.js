@@ -8,7 +8,7 @@ import {
 import ListItem from '../components/ListItem';
 import ListItemDeleteAction from '../components/ListItemDeleteAction';
 import ListItemSeparator from '../components/ListItemSeparator';
-import Colors from '../config/Colors';
+
 
 const initialMessages = [
     {
@@ -44,6 +44,7 @@ function MessagesScreen(props) {
                         image={item.image}
                         DeleteIconView={<ListItemDeleteAction />}
                         onPress={() => handleDelete(item)}
+                        selectMessageOnpress={()=> console.log("Message Selected: ",item)}
                     //renderRightActions={ListItemDeleteAction}
                     />
                 }

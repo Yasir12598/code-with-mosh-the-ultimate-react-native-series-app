@@ -17,19 +17,29 @@ import AppText from '../components/AppText';
 import defaultStyles from "../config/Styles"
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, items ,placeholder, onSelectItem, selectedItem}) {
+function AppPicker({
+    icon,
+    items,
+    placeholder,
+    PickerItemComponent=PickerItem,
+    numberOfColumns=1,
+    onSelectItem,
+    selectedItem,
+    width = "100%" }) {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <>
             <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-                <View style={styles.container}>
+                <View style={[styles.container, { width: width }]}>
                     {icon && <MaterialCommunityIcons
                         style={styles.icon}
                         name={icon}
                         size={25}
                         color={defaultStyles.Colors.medium}
                     />}
-                    <AppText style={[styles.text, { alignSelf: "center" }]}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+                    {selectedItem ? (<AppText style={[styles.text, { alignSelf: "center" }]} >{selectedItem.label}</AppText>)
+                        : (<AppText style={styles.placeholder}>{placeholder}</AppText>)}
+
                     <MaterialCommunityIcons
 
                         name={"chevron-down"}
@@ -39,19 +49,22 @@ function AppPicker({ icon, items ,placeholder, onSelectItem, selectedItem}) {
                 </View>
             </TouchableWithoutFeedback>
             <Modal visible={modalVisible} animationType={"fade"}>
-                <Button title='close'  onPress={() => setModalVisible(false)} />
+                <Button title='close' onPress={() => setModalVisible(false)} />
                 <FlatList
                     data={items}
-                    keyExtractor={item=>item.value.toString()}
-                    renderItem={({item})=>
-                        <PickerItem
-                            label={item.label}
-                            onPress={()=> {
+                    keyExtractor={item => item.value.toString()}
+                    numColumns={numberOfColumns}
+                    renderItem={({ item }) =>
+                        <PickerItemComponent
+                            item={item}
+
+                            //label={item.label}
+                            onPress={() => {
                                 setModalVisible(false);
                                 onSelectItem(item);
                             }}
-                            />
-                }
+                        />
+                    }
                 />
             </Modal>
         </>
@@ -63,8 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.Colors.light,
         borderRadius: 25,
         flexDirection: 'row',
-        width: "100%",
-        padding: 5,
+        padding: 10,
         marginVertical: 10,
     },
     icon: {
@@ -74,6 +86,10 @@ const styles = StyleSheet.create({
     },
 
     text: {
+        flex: 1,
+    },
+    placeholder: {
+        color: defaultStyles.Colors.medium,
         flex: 1,
     }
 
