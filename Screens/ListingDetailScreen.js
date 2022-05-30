@@ -9,13 +9,14 @@ StyleSheet,
 import Card from '../components/Card';
 import ListItem from '../components/ListItem';
  
- function ListingDetailScreen(props) {
+ function ListingDetailScreen({route}) {
+     const listing = route.params;
      return (
          <View>
              <Card
-             title={"Jacket for Sale"}
-             subTitle={"$100"}
-             image={require("../asserts/jacket2.jpg")}
+             title={listing.title}
+             subTitle={"$" + listing.price}
+             image={listing.image}
              />
 
              <ListItem

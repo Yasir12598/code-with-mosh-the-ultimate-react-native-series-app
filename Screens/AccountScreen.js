@@ -24,11 +24,13 @@ const menuItems = [
         icon: {
             name: "email",
             backgroundColor: Colors.secondary,
-        }
+
+        },
+        targetScreen:'Messages',
     }
 ]
 
-function AccountScreen(props) {
+function AccountScreen({navigation}) {
     return (
         <SafeAreaView style={styles.parentContainer}>
 
@@ -37,6 +39,7 @@ function AccountScreen(props) {
                     title={"Muhammad yasir"}
                     subTitle={"m.yasir1100@gmail.com"}
                     image={require("../asserts/yasir.jpg")}
+                    
                 />
             </View>
             <View style={styles.container}>
@@ -52,6 +55,7 @@ function AccountScreen(props) {
                                     name={item.icon.name}
                                     backgroundColor={item.icon.backgroundColor}
                                 />}
+                                selectMessageOnpress={()=> navigation.navigate(item.targetScreen)}
                         />
                     )
                     }

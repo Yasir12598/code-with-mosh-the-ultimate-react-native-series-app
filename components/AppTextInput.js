@@ -23,7 +23,7 @@ function AppTextInput({ passwordEyeOnpress, icon,passwordEyeIcon ,width="100%" ,
             />}
             <TextInput
                 placeholderTextColor={defaultStyles.Colors.medium}
-                style={[defaultStyles.text/*{width:"100%"}*/]}
+                style={[defaultStyles.text ,{flex:1}]}
                 {...otherProps}
             />
             {passwordEyeOnpress &&

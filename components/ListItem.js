@@ -17,7 +17,7 @@ function ListItem({ image, title, subTitle, ImageComponent, style, onPress, sele
     return (
        
 
-        <TouchableHighlight
+        <TouchableOpacity
             onPress={selectMessageOnpress}
             underlayColor={Colors.light}
         >
@@ -37,7 +37,7 @@ function ListItem({ image, title, subTitle, ImageComponent, style, onPress, sele
                     </TouchableOpacity>
                 </View>
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
         
     );
 }

@@ -7,9 +7,9 @@ TouchableNativeFeedback,
 
  } from 'react-native';
  import Colors from '../config/Colors';
-function AppButton({buttonTitle, buttonOnPress, buttonColor=Colors.primary}) {
+function AppButton({buttonTitle, buttonOnPress, buttonColor=Colors.primary, width}) {
     return (
-        <TouchableOpacity style={[styles.button, {backgroundColor:buttonColor}]} onPress={buttonOnPress}>
+        <TouchableOpacity style={[styles.button, {backgroundColor:buttonColor, width:width}]} onPress={buttonOnPress}>
             <Text style={styles.text}>{buttonTitle}</Text>
         </TouchableOpacity>
     );

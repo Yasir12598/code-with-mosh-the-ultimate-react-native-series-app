@@ -11,7 +11,7 @@ Image,
 import AppButton from '../components/AppButton';
 import Colors from '../config/Colors';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({navigation}) {
 return (
     <ImageBackground
         style={styles.BGimage}
@@ -29,11 +29,11 @@ return (
         </View>
 
         <View style={styles.loginButton}>
-            <AppButton buttonTitle={"Login"} buttonColor={Colors.primary} buttonOnPress={()=>console.log("Login Tapped")} />
+            <AppButton buttonTitle={"Login"} buttonColor={Colors.primary} buttonOnPress={()=>navigation.navigate('Login')} />
         </View>
         <View
         style={styles.registerButton}>
-            <AppButton buttonTitle={"Register"} buttonColor={Colors.secondary} buttonOnPress={()=>console.log("Registered Tapped")} />
+            <AppButton buttonTitle={"Register"} buttonColor={Colors.secondary} buttonOnPress={()=>navigation.navigate('Register')} />
         </View>
         
     </ImageBackground>
