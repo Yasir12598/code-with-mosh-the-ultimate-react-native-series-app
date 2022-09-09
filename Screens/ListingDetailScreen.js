@@ -11,12 +11,13 @@ import ListItem from '../components/ListItem';
  
  function ListingDetailScreen({route}) {
      const listing = route.params;
+     console.log('>>>>>>>>>>>>>>>>>>', listing.images[0].url)
      return (
          <View>
              <Card
              title={listing.title}
              subTitle={"$" + listing.price}
-             image={listing.image}
+             imageUrl={listing.images[0].url} 
              />
 
              <ListItem

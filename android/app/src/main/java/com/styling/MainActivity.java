@@ -1,5 +1,5 @@
 package com.styling;
-import expo.modules.ReactActivityDelegateWrapper;
+// import expo.modules.ReactActivityDelegateWrapper;
 import com.facebook.react.ReactActivityDelegate;
 
 import com.facebook.react.ReactActivity;
@@ -15,10 +15,8 @@ public class MainActivity extends ReactActivity {
     return "styling";
   }
 
-  @Override
-  protected ReactActivityDelegate createReactActivityDelegate() {
-    return new ReactActivityDelegateWrapper(this,
-      new ReactActivityDelegate(this, getMainComponentName())
-    );
-  }
+  // @Override
+  // protected ReactActivityDelegate createReactActivityDelegate() {
+  //   return new MainActivityDelegate(this, getMainComponentName());
+  // }
 }

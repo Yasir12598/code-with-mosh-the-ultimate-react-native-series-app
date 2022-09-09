@@ -1,5 +1,13 @@
-import React from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import React, { useState } from "react";
+
+import {
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  Button,
+} from "react-native";
+
 import * as Yup from "yup";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 
@@ -9,13 +17,18 @@ import {
   AppFormPicker as Picker,
   SubmitButton,
 } from "../components/forms";
+import FormImagePicker from "../components/forms/FormImagePicker";
+import useLocation from "../components/useLocation";
 
+import apiListing from '../api/listings';
+import UploadScreen from "./UploadScreen";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
+  images: Yup.array().min(1, "Please select at least one Image."),
 });
 
 const categories = [
@@ -76,18 +89,47 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+  const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, SetProgress] = useState(0);
+
+  const handleSubmit = async (values, {resetForm}) => {
+    SetProgress(0);
+    setUploadVisible(true);
+    const result = await apiListing.addListing({ ...values, location },
+      (progress) => SetProgress(progress)
+    );
+    
+    if (!result.ok) {
+      setUploadVisible(false);
+      return alert('Could not save the listing.');
+    }
+    resetForm();
+  }
+
+  console.log('?????????', location.latitude, '     ', location.longitude);
+
   return (
     <SafeAreaView style={styles.container}>
+      <UploadScreen
+        progress={progress}
+        visible={uploadVisible}
+        onDone={()=> setUploadVisible(false)}
+      />
       <Form
         initialValues={{
           title: "",
           price: "",
           description: "",
           category: null,
+          images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values, formikBag) => handleSubmit(values, formikBag)}
         validationSchema={validationSchema}
       >
+        <FormImagePicker
+          name={'images'}
+        />
         <FormField maxLength={255} name="title" placeholder="Title" />
         <FormField
           keyboardType="numeric"
@@ -97,8 +139,8 @@ function ListingEditScreen() {
           width={"50%"}
         />
         <Picker items={categories}
-         PickerItemComponent={CategoryPickerItem}
-         numberOfColumns={3}
+          PickerItemComponent={CategoryPickerItem}
+          numberOfColumns={3}
           name="category"
           placeholder="Category"
           width={"80%"}

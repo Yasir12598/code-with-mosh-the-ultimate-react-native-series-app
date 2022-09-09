@@ -1,30 +1,34 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
   Button,
   Text,
+  Image,
+  Pressable,
 } from 'react-native';
 
 import navigationTheme from './navigation/navigationTheme';
 import AppNavigator from './navigation/AppNavigator';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-
 import AuthNavigation from './navigation/AuthNavigation';
+import useLocation from './components/useLocation';
+import { useSafeAreaFrame } from 'react-native-safe-area-context';
 
 
 
 
 export default function App() {
+  
+ 
   return (
+
     <NavigationContainer theme={navigationTheme}>
-
       <AppNavigator/>
-
-    </NavigationContainer>
+    </NavigationContainer> 
     
-  );
+  )
 }
 
 
